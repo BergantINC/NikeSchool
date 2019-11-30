@@ -1,0 +1,112 @@
+<!DOCTYPE html>  
+<html>  
+  
+<head>  
+	<meta lang="sl-SI" charset="UTF-8">
+	<link rel="stylesheet" href="nike.css">
+    <title>  
+        Nike
+    </title>  
+</head>  
+  
+<body onclick="myFun()" onkeyup="myFun2()">
+	<div id="page" >
+		<div id="kkk">
+			<canvas id="ooga" height="300px" width="800px"></canvas>
+			<svg id="klux" width="800px" height="300px" xmlns="http://www.w3.org/2000/svg">
+			<g fill="#990033" stroke="#FFFFFF">
+				<path  stroke-width="4" d="
+					M 160 40 
+					C110 120, 130 180, 225 155 
+					L 755 15
+					L 200 250
+					C20 300,40 150, 160 40"/>
+			</g>
+		</svg>
+		</div>
+	</div>
+	<br>
+	
+	<div class="background-container" >
+	<img id="moon" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/moon2.png" alt="">
+	<div class="stars"></div>
+	<div class="twinkling"></div>
+	<div class="clouds"></div>
+	</div>
+	<script type="text/javascript">
+		var c = document.getElementById("ooga");
+		var ctx = c.getContext("2d");
+		var cl="#FFFFFF";
+		var id = setInterval(frame, 10);
+		var lw="4";
+		var a=5.0;
+		var b=0.1;
+		function frame() {
+		  if (false) {
+			clearInterval(id);
+		  } else {
+			ctx.scale(1,1);
+			ctx.beginPath();
+			ctx.lineWidth=a;
+			ctx.lineJoin = "round";
+			ctx.moveTo(160, 40);
+			ctx.bezierCurveTo(110, 120, 130, 180, 225, 155);
+			ctx.lineTo(755,15);
+			ctx.lineTo(200,250);
+			ctx.bezierCurveTo(20, 300, 40, 150, 160, 40);
+			ctx.fill();
+			ctx.strokeStyle=cl;
+			ctx.stroke();
+			if(a>8){b=-0.1;}
+			else if(a<2){b=0.1;}
+			a=a+b;
+		  }
+		}
+		document.addEventListener('keyup', function (event) {
+			if (event.defaultPrevented) {
+				return;
+			}
+
+			var key = event.key || event.keyCode;
+	
+			if (key === 'b') {
+				cl="#0000ff";
+			}
+			if(key === 'g')
+			{
+				cl="#00ff00";
+			}
+			if(key === 'r')
+			{
+				cl="#ff0000";
+			}
+			if(key === 'a')
+			{
+				cl="#FFFFFF";
+			
+		}});
+		
+		
+	</script>
+	<script type="text/javascript">
+		var x=0;
+		function myFun(){
+			if(x==0){
+				document.getElementById("ooga").style.display = "block";
+				document.getElementById("klux").style.display = "none";
+			}
+			if(x==1){
+				document.getElementById("ooga").style.display = "none";
+				document.getElementById("klux").style.display = "block";
+			}
+			if(x==0){
+				x=1;
+			}
+			else{
+				x=0;
+			}
+		}
+	</script>
+</body>  
+  
+</html> 
